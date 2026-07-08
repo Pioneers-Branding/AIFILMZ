@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thank You - AI Filmz</title>
+
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ------------------------------------
+   BASE THEME VARIABLES
+-------------------------------------*/
+:root {
+  --bg-primary: #ffffff;
+  --text-primary: #000000;
+  --text-secondary: #555555;
+  --header-bg: rgba(255, 255, 255, 0.95);
+  --header-text: #000000;
+  --accent-color: #FE4A23;
+  --text-inverse: #ffffff;
+}
+
+/* ------------------------------------
+   DARK MODE THEME
+-------------------------------------*/
+.dark {
+  --bg-primary: #0f0f0f;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --header-bg: rgba(20, 20, 20, 0.95);
+  --header-text: #ffffff;
+}
+
+/* ------------------------------------
+   GLOBAL STYLES
+-------------------------------------*/
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background 0.3s, color 0.3s;
+}
+
+/*** Smooth Scroll ***/
+html { scroll-behavior: smooth; }
+
+/* ------------------------------------
+   HEADER
+-------------------------------------*/
+header {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  z-index: 1000;
+  padding: 5px 0;
+  background: transparent;
+  transform: translateY(-100px);
+  opacity: 0;
+  animation: slideDown 0.8s ease-out forwards;
+}
+
+@keyframes slideDown {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 8px 20px;
+  border-radius: 40px;
+  background: var(--header-bg);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(10px);
+  transition: background 0.3s;
+}
+
+header.scrolled .header-inner {
+  background: var(--header-bg);
+}
+
+/* NAV */
+nav a {
+  padding: 10px 14px;
+  margin: 0 3px;
+  text-decoration: none;
+  color: var(--header-text);
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+/* Desktop Nav */
+.nav-desktop { display: none; }
+@media (min-width: 992px) {
+  .nav-desktop { display: flex; }
+}
+
+/* Mobile Menu Button */
+.menu-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: var(--header-text);
+  display: flex;
+  align-items: center;
+}
+
+/* Theme Toggle */
+.theme-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+  color: var(--header-text);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  display: none;
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 75px;
+  background: var(--header-bg);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  border-radius: 12px;
+  padding: 15px 0;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.mobile-menu a {
+  display: block;
+  padding: 12px 20px;
+  color: var(--header-text);
+}
+
+/* ------------------------------------
+   THANK YOU PAGE CONTENT
+-------------------------------------*/
+.thankyou-container {
+  padding-top: 160px;
+  padding-bottom: 60px;
+  text-align: center;
+}
+
+.checkmark {
+  font-size: 80px;
+  color: #4ade80;
+  animation: popIn 0.6s ease-out forwards, float 2s infinite ease-in-out;
+  opacity: 0;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+@keyframes float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.7s forwards;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.delay1 { animation-delay: 0.3s; }
+.delay2 { animation-delay: 0.4s; }
+.delay3 { animation-delay: 0.5s; }
+.delay4 { animation-delay: 0.6s; }
+
+.back-btn {
+  padding: 12px 30px;
+  background: #FE4A23;
+  color: #fff;
+  border: 2px solid #FE4A23;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.back-btn:hover {
+  background: #E03A16;
+  transform: scale(1.05);
+}
+
+/* ------------------------------------
+   FOOTER
+-------------------------------------*/
+footer {
+  background: #000;
+  color: #ccc;
+  padding: 50px 20px;
+  margin-top: 80px;
+}
+
+footer a { color: #ccc; text-decoration: none; transition: 0.3s; }
+footer a:hover { color: #FE4A23; }
+
+footer .footer-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+@media (min-width: 768px) {
+  footer .footer-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="header-inner">
+
+    <!-- Logo -->
+    <a href="/">
+      <img src="/imges/logo.png" alt="Logo" style="height:40px;">
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="nav-desktop">
+      <a href="/#services">Services</a>
+      <a href="/#how-it-works">How we work</a>
+      <a href="/about">About us</a>
+      <a href="/contact">Contact</a>
+    </nav>
+
+    <!-- Right Controls -->
+    <div style="display:flex; align-items:center; gap:10px;">
+      <button class="theme-btn" id="themeToggle">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+
+      <a href="tel:919789565515" class="nav-desktop" style="
+        background: var(--accent-color);
+        color: var(--text-inverse);
+        padding: 10px 20px;
+        border-radius: 30px;
+        text-decoration:none;
+        font-weight: 600;
+      ">Connect</a>
+
+      <button class="menu-btn" id="menuToggle">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/#services">Services</a>
+    <a href="/#how-it-works">How we work</a>
+    <a href="/about">About us</a>
+    <a href="/contact">Contact</a>
+    <a href="tel:919789565515" style="color:#fff; background:#FE4A23; margin:10px; padding:10px 0; text-align:center; border-radius:8px;">Connect</a>
+  </div>
+</header>
+
+<!-- THANK YOU CONTENT -->
+<div class="thankyou-container">
+
+  <i class="fa-regular fa-circle-check checkmark"></i>
+
+  <h1 class="fade delay1">Thank you for</h1>
+  <h2 class="fade delay2">taking the first step!</h2>
+
+  <p class="fade delay3">
+    Your message has been received — <br> we'll be in touch soon.
+  </p>
+
+  <button class="back-btn fade delay4" onclick="window.location.href='/'">
+    Back to homepage
+  </button>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+
+    <!-- About -->
+    <div>
+      <img src="/imges/logo.png" style="height:50px;">
+      <p style="margin-top:15px;">
+        AI-powered video production platform specializing in AI avatar cloning,
+        animated videos, product videos, and more.
+      </p>
+
+      <div style="display:flex; gap:10px; margin-top:20px;">
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+
+    <!-- Services -->
+    <div>
+      <h3 style="color:#fff;">Our Services</h3>
+      <p><a href="/#services">AI Avatar Cloning</a></p>
+      <p><a href="/#services">Cloned Reel Videos</a></p>
+      <p><a href="/#services">Animated Graphics</a></p>
+      <p><a href="/#services">Product Videos</a></p>
+      <p><a href="/#services">Ad Films</a></p>
+      <p><a href="/#services">Music Videos</a></p>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h3 style="color:#fff;">Quick Links</h3>
+      <p><a href="/#services">Services</a></p>
+      <p><a href="/#how-it-works">How we work</a></p>
+      <p><a href="/about">About us</a></p>
+      <p><a href="/contact">Contact us</a></p>
+    </div>
+
+    <!-- Contact -->
+    <div>
+      <h3 style="color:#fff;">Contact</h3>
+
+      <p><i class="fa-solid fa-location-dot"></i> Gurugram, Haryana</p>
+      <p><i class="fa-solid fa-phone"></i> +91 9789565515</p>
+      <p><i class="fa-solid fa-envelope"></i> official@brandingpioneers.com</p>
+
+      <h4 style="margin-top:15px; color:#fff;">Business Hours</h4>
+      <p>Mon-Fri: 9AM–6PM IST</p>
+    </div>
+
+  </div>
+
+  <div style="
+    margin-top:40px;
+    border-top:1px solid #333;
+    padding-top:20px;
+    text-align:center;
+    font-size:12px;
+    color:#999;
+  ">
+    © 2025 AI Filmz. All rights reserved.
+  </div>
+</footer>
+
+
+<!-- JS FOR THEME + MENU + SCROLL -->
+<script>
+// Theme Toggle
+const themeToggle = document.getElementById("themeToggle");
+const userTheme = localStorage.getItem("theme");
+
+if (userTheme === "dark") document.body.classList.add("dark");
+
+themeToggle.onclick = () => {
+  document.body.classList.toggle("dark");
+  localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+};
+
+// Mobile Menu
+const menuToggle = document.getElementById("menuToggle");
+const mobileMenu = document.getElementById("mobileMenu");
+
+menuToggle.onclick = () => {
+  mobileMenu.style.display = mobileMenu.style.display === "block" ? "none" : "block";
+  menuToggle.innerHTML =
+    mobileMenu.style.display === "block"
+      ? '<i class="fa-solid fa-xmark"></i>'
+      : '<i class="fa-solid fa-bars"></i>';
+};
+
+// Header Scroll Effect
+window.addEventListener("scroll", () => {
+  document.getElementById("header").classList.toggle("scrolled", window.scrollY > 50);
+});
+</script>
+
+</body>
+</html>
